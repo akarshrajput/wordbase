@@ -53,7 +53,9 @@ function Header({ inputSearch, onInputSearch }) {
 function Logo() {
   return (
     <div className="logo">
-      <p>Wordbase</p>
+      <p>
+        Wordbase<span>by @akarsh</span>
+      </p>
     </div>
   );
 }
