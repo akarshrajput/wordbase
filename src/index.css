@@ -33,7 +33,7 @@ body {
 }
 
 .logo {
-  font-size: 3.4rem;
+  font-size: 3rem;
   font-weight: 500;
   justify-self: start;
   color: #fff;
@@ -51,6 +51,7 @@ body {
   padding: 1.2rem 1rem;
   font-family: inherit;
   width: 30rem;
+  /* border: 2px solid #000000; */
 }
 .word-list-flex {
   display: flex;
