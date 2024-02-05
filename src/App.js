@@ -34,18 +34,22 @@ export default function App() {
   );
   return (
     <div>
-      <Header inputSearch={inputSearch} onInputSearch={handleInputSearch} />
+      <Header
+        inputSearch={inputSearch}
+        onInputSearch={handleInputSearch}
+        dataArray={dataArray}
+      />
       <Body dataArray={dataArray} />
     </div>
   );
 }
 
-function Header({ inputSearch, onInputSearch }) {
+function Header({ inputSearch, onInputSearch, dataArray }) {
   return (
     <div className="header">
       <Logo />
       <Search inputSearch={inputSearch} onInputSearch={onInputSearch} />
-      <Container />
+      <Container dataArray={dataArray} />
     </div>
   );
 }
@@ -73,8 +77,12 @@ function Search({ inputSearch, onInputSearch }) {
   );
 }
 
-function Container() {
-  return <div></div>;
+function Container({ dataArray }) {
+  return (
+    <div className="container-result">
+      <p>Results : {dataArray.length}</p>
+    </div>
+  );
 }
 
 function Body({ dataArray }) {
