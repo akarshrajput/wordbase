@@ -103,12 +103,16 @@ function WordList({ items }) {
   const firstLetter = dataSetMain.charAt(0).toUpperCase();
   const remainingChars = dataSetMain.slice(1);
   const capitalizedDataSetMain = firstLetter + remainingChars;
+  let a = data[1];
+  if (data.length === 1) {
+    a = "not provided";
+  }
   return (
     <div className="word-list-item">
       <p>{items.id}.</p>
       <div className="word-list-item-container">
         <p>{capitalizedDataSetMain}</p>
-        <p>Example - {data[1]}</p>
+        <p>Example - {a}</p>
       </div>
     </div>
   );
