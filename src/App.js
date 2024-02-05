@@ -69,7 +69,7 @@ function Search({ inputSearch, onInputSearch }) {
     <div className="search-container">
       <input
         type="text"
-        placeholder="Search Word eg. school"
+        placeholder="Search word (school)"
         value={inputSearch}
         onChange={(e) => onInputSearch(e.target.value)}
       />
