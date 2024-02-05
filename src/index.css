@@ -19,7 +19,8 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
   align-items: center;
-  background-color: #845ef7;
+  /* background-color: #845ef7; */
+  background-color: #343a40;
   border-radius: 0.6rem;
   padding: 2rem;
   position: fixed;
@@ -66,12 +67,15 @@ body {
   gap: 1rem;
   font-size: 1.8rem;
   color: #343a40;
+  border: 1px solid #343a403e;
 }
 .word-list-item:nth-child(odd) {
-  background-color: #e6fcf5;
+  /* background-color: #e6fcf5; */
+  background-color: #f8f9fa;
 }
 .word-list-item:nth-child(even) {
-  background-color: #edf2ff;
+  /* background-color: #edf2ff; */
+  background-color: #f8f9fa;
 }
 .word-list-item-container {
   display: flex;
