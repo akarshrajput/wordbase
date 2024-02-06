@@ -4,6 +4,7 @@ import "./index.css";
 export default function App() {
   const [inputSearch, setInputSearch] = useState("");
   const [dataArray, setDataArray] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputSearch = function (value) {
     setInputSearch(value);
@@ -12,6 +13,7 @@ export default function App() {
   useEffect(
     function () {
       async function fetchData() {
+        setIsLoading(true);
         try {
           const res = await fetch(
             `https://wordbase.up.railway.app/word/${inputSearch}`
@@ -22,6 +24,7 @@ export default function App() {
             return;
           }
           setDataArray(data.data.definitions);
+          setIsLoading(false);
           // console.log(data.data);
         } catch (error) {
           console.error("Error fetching data:", error);
@@ -39,7 +42,11 @@ export default function App() {
         onInputSearch={handleInputSearch}
         dataArray={dataArray}
       />
-      <Body dataArray={dataArray} />
+      <Body
+        dataArray={dataArray}
+        inputSearch={inputSearch}
+        isLoading={isLoading}
+      />
     </div>
   );
 }
@@ -53,6 +60,14 @@ function Header({ inputSearch, onInputSearch, dataArray }) {
     </div>
   );
 }
+
+// function Loader() {
+//   return (
+//     <div>
+//       <p>Loading...</p>
+//     </div>
+//   );
+// }
 
 function Logo() {
   return (
@@ -85,14 +100,26 @@ function Container({ dataArray }) {
   );
 }
 
-function Body({ dataArray }) {
+function Body({ dataArray, inputSearch, isLoading }) {
   return (
     <div className="word-list-flex">
+      <Quote inputSearch={inputSearch} dataArray={dataArray} />
       {dataArray.length > 0 ? (
         dataArray.map((items) => <WordList key={items.id} items={items} />)
       ) : (
         <p></p>
       )}
+    </div>
+  );
+}
+
+function Quote({ inputSearch, dataArray }) {
+  if (inputSearch.length === 0) {
+    return <div className="quote">Please write something...</div>;
+  }
+  return (
+    <div className="quote">
+      Searched for <span>"{inputSearch}"</span> : {dataArray.length}
     </div>
   );
 }
